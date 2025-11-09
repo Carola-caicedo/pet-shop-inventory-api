@@ -17,7 +17,13 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/e2e/jest-e2e.config.ts",
+    "test:auth": "jest test/auth",
+    "test:users": "jest test/users",
+    "test:guards": "jest test/auth/guards",
+    "doc:generate": "compodoc -p tsconfig.json -s --disableSourceCode",
+    "doc:serve": "compodoc -p tsconfig.json -s -w --disableSourceCode",
+    "doc:build": "compodoc -p tsconfig.json -d documentation/compodoc --disableSourceCode"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
@@ -46,6 +52,7 @@
     "typeorm": "^0.3.27"
   },
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.32",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.18.0",
     "@nestjs/cli": "^11.0.0",
@@ -69,22 +76,5 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
   }
 }
